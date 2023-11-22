@@ -24,3 +24,28 @@ Route::get('/', function () {
 Route::get('/veggies/{veggieName}', function (string $veggiename) {
         return $veggiename;
 })->whereIn('veggieName', ['baigan', 'bhindi', 'aaloo', 'gobhi']);
+
+use Practicals\Song;
+/*Route::get('/songs', function () {
+    return view('songs');
+});
+Route::get('/songs', function () {
+    $song = new Song();
+    $song->setTitle('With You');
+    return view('songs', [ 'song' => $song ]);
+});*/
+Route::get('/songs', function () {
+  $song1 = new Song();
+  $song1->setTitle("Stan");
+  $song1->setArtist("Eminem");
+
+  $song2 = new Song();
+  $song2->setTitle("Nothing Else Matters");
+  $song2->setArtist("Metallica");
+
+  $song3 = new Song();
+  $song3->setTitle("With You");
+  $song3->setArtist("A P Dhillon");
+
+  return view('songs', [ 'songs' => [ $song1, $song2, $song3 ] ]);
+});
